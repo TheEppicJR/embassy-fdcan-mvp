@@ -18,7 +18,6 @@ bind_interrupts!(struct Irqs {
 async fn main(_spawner: Spawner) {
 
     let mut config = Config::default();
-    config.rcc = rcc::Config::default();
 
     // configure FDCAN to use PLL1_Q at 64 MHz
     config.rcc.pll1 = Some(rcc::Pll {
