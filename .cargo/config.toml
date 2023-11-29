@@ -1,8 +1,11 @@
 [target.thumbv8m.main-none-eabihf]
 runner = 'probe-rs run --chip STM32H503RBTx'
 
+[target.thumbv7em-none-eabi]
+runner = 'probe-rs run --chip STM32H750XBHx'
+
 [build]
-target = "thumbv8m.main-none-eabihf"
+target = "thumbv7em-none-eabi"
 
 [env]
 DEFMT_LOG = "info"
