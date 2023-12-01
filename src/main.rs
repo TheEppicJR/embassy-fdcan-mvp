@@ -16,24 +16,6 @@ bind_interrupts!(struct Irqs {
     FDCAN1_IT1 => can::IT1InterruptHandler<FDCAN1>;
 });
 
-// #[embassy_executor::task]
-// async fn writer(mut tx: can::Fdcan<'static, FDCAN1, can::Fdcan::Transmit>::FdcanTX) {
-//     let frame = can::TxFrame::new(
-//         can::TxFrameHeader {
-//             len: 8,
-//             frame_format: can::FrameFormat::Standard,
-//             id: can::StandardId::new(0x123).unwrap().into(),
-//             bit_rate_switching: false,
-//             marker: None,
-//         },
-//         &[1, 2, 3, 4, 5, 6, 7, 8]
-//     ).unwrap();
-
-//     loop {
-//         tx.write(&frame).await.unwrap();
-//         Timer::after_millis(250).await;
-//     }
-// }
 
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
@@ -65,9 +47,9 @@ async fn main(_spawner: Spawner) {
             .set_nominal_bit_timing(
                 can::config::NominalBitTiming {
                     sync_jump_width: 1.try_into().unwrap(),
-                    prescaler: 8.try_into().unwrap(),
-                    seg1: 13.try_into().unwrap(),
-                    seg2: 2.try_into().unwrap(),
+                    prescaler: 1.try_into().unwrap(),
+                    seg1: 55.try_into().unwrap(),
+                    seg2: 8.try_into().unwrap(),
                 }
             )
     );
@@ -86,8 +68,6 @@ async fn main(_spawner: Spawner) {
     ).unwrap();
     info!("3");
     let mut led = gpio::Output::new(peripherals.PA5, gpio::Level::High, gpio::Speed::Low);
-
-    // let (mut tx, rx) = can.split();
 
     info!("Configured");
 
