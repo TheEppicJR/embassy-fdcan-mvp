@@ -9,6 +9,7 @@ use embassy_stm32::can;
 use embassy_stm32::{bind_interrupts, gpio, Config, rcc};
 use embassy_stm32::peripherals::*;
 use embassy_time::Timer;
+use embassy_stm32::time::Hertz;
 
 
 bind_interrupts!(struct Irqs {
@@ -23,13 +24,14 @@ async fn main(_spawner: Spawner) {
     let mut config = Config::default();
 
     // configure FDCAN to use PLL1_Q at 64 MHz
+    config.rcc.hse = Some(rcc::Hse{freq: Hertz(25_000_000), mode: rcc::HseMode::Oscillator});
     config.rcc.pll1 = Some(rcc::Pll {
-        source: rcc::PllSource::HSI,
-        prediv: rcc::PllPreDiv::DIV22,
-        mul: rcc::PllMul::MUL169,
+        source: rcc::PllSource::HSE,
+        prediv: rcc::PllPreDiv::DIV2,
+        mul: rcc::PllMul::MUL12,
         divp: Some(rcc::PllDiv::DIV2),
-        divq: Some(rcc::PllDiv::DIV4),
-        divr: None,
+        divq: Some(rcc::PllDiv::DIV3),
+        divr: Some(rcc::PllDiv::DIV2),
     });
     config.rcc.fdcan_clock_source = rcc::FdCanClockSource::PLL1_Q;
 
@@ -46,15 +48,15 @@ async fn main(_spawner: Spawner) {
         can::config::FdCanConfig::default()
             .set_nominal_bit_timing(
                 can::config::NominalBitTiming {
-                    sync_jump_width: 1.try_into().unwrap(),
-                    prescaler: 1.try_into().unwrap(),
-                    seg1: 55.try_into().unwrap(),
-                    seg2: 8.try_into().unwrap(),
+                    sync_jump_width: 10.try_into().unwrap(),
+                    prescaler: 10.try_into().unwrap(),
+                    seg1: 2.try_into().unwrap(),
+                    seg2: 2.try_into().unwrap(),
                 }
             )
     );
     info!("1");
-    let mut can = can.into_normal_mode();
+    let mut can = can.into_external_loopback_mode();
     info!("2");
     let frame = can::TxFrame::new(
         can::TxFrameHeader {
@@ -72,14 +74,24 @@ async fn main(_spawner: Spawner) {
     info!("Configured");
 
     loop {
-        led.set_high();
+        // led.set_high();
         _ = can.write(&frame).await;
         info!("sent");
+        let received = can.read().await;
+        info!("received");
+        match received {
+            Ok(frame) => {
+                info!("Received frame: {:?}", frame.data());
+            },
+            Err(e) => {
+                info!("Error: ");
+            }
+        }
         Timer::after_millis(250).await;
 
-        led.set_low();
-        _ = can.write(&frame).await;
+        // led.set_low();
+        // _ = can.write(&frame).await;
         
-        Timer::after_millis(250).await;
+        // Timer::after_millis(25).await;
     }
 }
