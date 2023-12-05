@@ -5,7 +5,7 @@
 use defmt::*;
 use {defmt_rtt as _, panic_probe as _};
 use embassy_executor::Spawner;
-use embassy_stm32::can;
+use embassy_stm32::can::{self, FdcanRx, NormalOperationMode};
 use embassy_stm32::{bind_interrupts, gpio, Config, rcc};
 use embassy_stm32::peripherals::*;
 use embassy_time::Timer;
@@ -17,6 +17,40 @@ bind_interrupts!(struct Irqs {
     FDCAN1_IT1 => can::IT1InterruptHandler<FDCAN1>;
 });
 
+
+#[embassy_executor::task]
+async fn task1(mut rx: FdcanRx<'static, 'static, FDCAN1, NormalOperationMode>) {
+    loop {
+        let received = rx.read().await;
+        match received {
+            Ok(frame) => {
+                info!("Received frame: {:?}", frame.data());
+            },
+            Err(e) => {
+                info!("Error: ");
+            }
+        }
+    }
+}
+
+#[embassy_executor::task]
+async fn task2(mut tx: can::FdcanTx<'static, 'static, FDCAN1, NormalOperationMode>) {
+    let frame = can::TxFrame::new(
+        can::TxFrameHeader {
+            len: 8,
+            frame_format: can::FrameFormat::Standard,
+            id: can::StandardId::new(0x123).unwrap().into(),
+            bit_rate_switching: false,
+            marker: None,
+        },
+        &[1, 2, 3, 4, 5, 6, 7, 8]
+    ).unwrap();
+    
+    loop {
+        _ = tx.write(&frame).await;
+        Timer::after_millis(250).await;
+    }
+}
 
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
@@ -55,43 +89,14 @@ async fn main(_spawner: Spawner) {
                 }
             )
     );
-    info!("1");
-    let mut can = can.into_external_loopback_mode();
-    info!("2");
-    let frame = can::TxFrame::new(
-        can::TxFrameHeader {
-            len: 8,
-            frame_format: can::FrameFormat::Standard,
-            id: can::StandardId::new(0x123).unwrap().into(),
-            bit_rate_switching: false,
-            marker: None,
-        },
-        &[1, 2, 3, 4, 5, 6, 7, 8]
-    ).unwrap();
-    info!("3");
+    let mut can = can.into_normal_mode();
+    
     let mut led = gpio::Output::new(peripherals.PA5, gpio::Level::High, gpio::Speed::Low);
 
+    let (tx1, rx1) = can.split();
     info!("Configured");
 
-    loop {
-        // led.set_high();
-        _ = can.write(&frame).await;
-        info!("sent");
-        let received = can.read().await;
-        info!("received");
-        match received {
-            Ok(frame) => {
-                info!("Received frame: {:?}", frame.data());
-            },
-            Err(e) => {
-                info!("Error: ");
-            }
-        }
-        Timer::after_millis(250).await;
+    let task1 = task1(rx1);
+    let task2 = task2(tx1);
 
-        // led.set_low();
-        // _ = can.write(&frame).await;
-        
-        // Timer::after_millis(25).await;
-    }
 }

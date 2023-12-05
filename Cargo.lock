@@ -188,7 +188,7 @@ dependencies = [
 [[package]]
 name = "embassy-embedded-hal"
 version = "0.1.0"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 dependencies = [
  "defmt",
  "embassy-futures",
@@ -205,7 +205,7 @@ dependencies = [
 [[package]]
 name = "embassy-executor"
 version = "0.3.3"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 dependencies = [
  "cortex-m",
  "critical-section",
@@ -217,12 +217,12 @@ dependencies = [
 [[package]]
 name = "embassy-futures"
 version = "0.1.1"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 
 [[package]]
 name = "embassy-hal-internal"
 version = "0.1.0"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 dependencies = [
  "cortex-m",
  "critical-section",
@@ -233,7 +233,7 @@ dependencies = [
 [[package]]
 name = "embassy-macros"
 version = "0.2.1"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 dependencies = [
  "darling",
  "proc-macro2",
@@ -244,7 +244,7 @@ dependencies = [
 [[package]]
 name = "embassy-net-driver"
 version = "0.2.0"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 dependencies = [
  "defmt",
 ]
@@ -252,7 +252,7 @@ dependencies = [
 [[package]]
 name = "embassy-stm32"
 version = "0.1.0"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 dependencies = [
  "bit_field",
  "bxcan",
@@ -292,7 +292,7 @@ dependencies = [
 [[package]]
 name = "embassy-sync"
 version = "0.4.0"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 dependencies = [
  "cfg-if",
  "critical-section",
@@ -304,7 +304,7 @@ dependencies = [
 [[package]]
 name = "embassy-time"
 version = "0.1.5"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 dependencies = [
  "cfg-if",
  "critical-section",
@@ -318,7 +318,7 @@ dependencies = [
 [[package]]
 name = "embassy-usb-driver"
 version = "0.1.0"
-source = "git+https://github.com/MaxiluxSystems/embassy.git?branch=feature/fdcan#fac229858a4fe61a46405bc73b086a834d0314c0"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
 dependencies = [
  "defmt",
 ]
@@ -420,6 +420,7 @@ dependencies = [
  "embassy-sync",
  "embassy-time",
  "embedded-io-async",
+ "fdcan",
  "heapless",
  "panic-probe",
  "static_cell",
