@@ -188,7 +188,7 @@ dependencies = [
 [[package]]
 name = "embassy-embedded-hal"
 version = "0.1.0"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 dependencies = [
  "defmt",
  "embassy-futures",
@@ -205,7 +205,7 @@ dependencies = [
 [[package]]
 name = "embassy-executor"
 version = "0.3.3"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 dependencies = [
  "cortex-m",
  "critical-section",
@@ -217,12 +217,12 @@ dependencies = [
 [[package]]
 name = "embassy-futures"
 version = "0.1.1"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 
 [[package]]
 name = "embassy-hal-internal"
 version = "0.1.0"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 dependencies = [
  "cortex-m",
  "critical-section",
@@ -233,7 +233,7 @@ dependencies = [
 [[package]]
 name = "embassy-macros"
 version = "0.2.1"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 dependencies = [
  "darling",
  "proc-macro2",
@@ -244,7 +244,7 @@ dependencies = [
 [[package]]
 name = "embassy-net-driver"
 version = "0.2.0"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 dependencies = [
  "defmt",
 ]
@@ -252,7 +252,7 @@ dependencies = [
 [[package]]
 name = "embassy-stm32"
 version = "0.1.0"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 dependencies = [
  "bit_field",
  "bxcan",
@@ -292,7 +292,7 @@ dependencies = [
 [[package]]
 name = "embassy-sync"
 version = "0.4.0"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 dependencies = [
  "cfg-if",
  "critical-section",
@@ -304,7 +304,7 @@ dependencies = [
 [[package]]
 name = "embassy-time"
 version = "0.1.5"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 dependencies = [
  "cfg-if",
  "critical-section",
@@ -318,7 +318,7 @@ dependencies = [
 [[package]]
 name = "embassy-usb-driver"
 version = "0.1.0"
-source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#3466f687735ae888d88ec8d673cd13604a6dfe34"
+source = "git+https://github.com/TheEppicJR/embassy.git?branch=fdcan-exports#fa696bd84ded62d648ee11f9866515f822972e8e"
 dependencies = [
  "defmt",
 ]
@@ -369,9 +369,9 @@ dependencies = [
 
 [[package]]
 name = "embedded-io-async"
-version = "0.6.0"
+version = "0.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de03527d6fb488b2d7c7a4dc81dfb6a657efe264256bfc70bb899746821666b1"
+checksum = "3ff09972d4073aa8c299395be75161d582e7629cd663171d62af73c8d50dba3f"
 dependencies = [
  "defmt",
  "embedded-io",
@@ -379,15 +379,15 @@ dependencies = [
 
 [[package]]
 name = "embedded-storage"
-version = "0.3.0"
+version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "156d7a2fdd98ebbf9ae579cbceca3058cff946e13f8e17b90e3511db0508c723"
+checksum = "a21dea9854beb860f3062d10228ce9b976da520a73474aed3171ec276bc0c032"
 
 [[package]]
 name = "embedded-storage-async"
-version = "0.4.0"
+version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "052997a894670d0cde873faa7405bc98e2fd29f569d2acd568561bc1c396b35a"
+checksum = "1763775e2323b7d5f0aa6090657f5e21cfa02ede71f5dc40eead06d64dcd15cc"
 dependencies = [
  "embedded-storage",
 ]
@@ -590,9 +590,9 @@ checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 
 [[package]]
 name = "portable-atomic"
-version = "1.5.1"
+version = "1.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3bccab0e7fd7cc19f820a1c8c91720af652d0c88dc9664dd72aef2614f04af3b"
+checksum = "7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0"
 
 [[package]]
 name = "proc-macro-error"
@@ -620,9 +620,9 @@ dependencies = [
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.69"
+version = "1.0.70"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "134c189feb4956b20f6f547d2cf727d4c0fe06722b20a0eec87ed445a97f92da"
+checksum = "39278fbbf5fb4f646ce651690877f89d1c5811a3d4acb27700c1cb3cdb78fd3b"
 dependencies = [
  "unicode-ident",
 ]
